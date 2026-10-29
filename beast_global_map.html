@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_87e2aac6a4f46045f091181ea4186c9c {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    <title>BEAST AUDIT - BACI Satellite Verification Map</title>
+    
+    <div style="position:fixed;bottom:30px;left:30px;z-index:9999;background:#0d1117;
+                color:#e6edf3;padding:10px 12px;border:1px solid #30363d;border-radius:6px;
+                font:12px system-ui">
+      <b>BACI verdict</b><br><span style="color:#1a7f37">&#9679;</span> ISOLATED_IMPACT<br><span style="color:#0969da">&#9679;</span> REGIONAL_CLIMATE_SHIFT<br><span style="color:#6e7781">&#9679;</span> MARGINAL_OR_NOISE<br><span style="color:#cf222e">&#9679;</span> LOCAL_DEGRADATION<br><span style="color:#8c959f">&#9679;</span> NO_DATA<br>
+    </div>
+    
+            <div class="folium-map" id="map_87e2aac6a4f46045f091181ea4186c9c" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_87e2aac6a4f46045f091181ea4186c9c = L.map(
+                "map_87e2aac6a4f46045f091181ea4186c9c",
+                {
+                    center: [10.0, 15.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 2,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_87e2aac6a4f46045f091181ea4186c9c);
+
+            
+
+        
+    
+            var tile_layer_7fe142b1ecef3a4bc851c08776e1e44a = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "Tiles \u0026copy; Esri",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_7fe142b1ecef3a4bc851c08776e1e44a.addTo(map_87e2aac6a4f46045f091181ea4186c9c);
+        
+    
+            var circle_marker_65814fc936ad6bf8a54dc7ccb5069810 = L.circleMarker(
+                [30.046, -85.475],
+                {"bubblingMouseEvents": true, "color": "#1a7f37", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1a7f37", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 1}
+            ).addTo(map_87e2aac6a4f46045f091181ea4186c9c);
+        
+    
+        var popup_8f130c130692f40b5f54f374a9923440 = L.popup({
+  "maxWidth": 370,
+});
+
+        
+            
+                var html_b0e9c09cb4c09ed1e900e73c36a3f47b = $(`<div id="html_b0e9c09cb4c09ed1e900e73c36a3f47b" style="width: 100.0%; height: 100.0%;">         <div style="font-family:system-ui;width:330px">           <h4 style="margin:0 0 6px">Tyndall_AFB_FL_US</h4>           <table style="font-size:12px;border-collapse:collapse">             <tr><td style="color:#666">Category</td><td><b>Reforestation</b></td></tr>             <tr><td style="color:#666">Metric</td><td><b>NDVI</b></td></tr>             <tr><td style="color:#666">Baseline</td><td>2019-12-31 &middot; S2A_16RFU_20191231_1_L2A</td></tr>             <tr><td style="color:#666">Current</td><td>2025-12-19 &middot; S2C_16RFU_20251219_0_L2A</td></tr>             <tr><td style="color:#666">Month gap</td><td>0</td></tr>             <tr><td style="color:#666">Cloud %</td><td>0.010 / 0.010</td></tr>             <tr><td style="color:#666">Core</td><td>0.573 &rarr; 0.731</td></tr>             <tr><td style="color:#666">Control</td><td>0.558 &rarr; 0.644</td></tr>             <tr><td style="color:#666">Core delta</td><td>+0.158</td></tr>             <tr><td style="color:#666">Ctrl delta</td><td>+0.085</td></tr>             <tr><td style="color:#666">Net BACI</td><td><b>+0.073</b></td></tr>             <tr><td style="color:#666">Verdict</td><td><b>ISOLATED_IMPACT</b></td></tr>           </table>         </div></div>`)[0];
+                popup_8f130c130692f40b5f54f374a9923440.setContent(html_b0e9c09cb4c09ed1e900e73c36a3f47b);
+            
+        
+
+        circle_marker_65814fc936ad6bf8a54dc7ccb5069810.bindPopup(popup_8f130c130692f40b5f54f374a9923440)
+        ;
+
+        
+    
+    
+            circle_marker_65814fc936ad6bf8a54dc7ccb5069810.bindTooltip(
+                `<div>
+                     Tyndall_AFB_FL_US
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_71732ed41a507b7ae3844139b14bf1e1 = L.circleMarker(
+                [50.95, -121.35],
+                {"bubblingMouseEvents": true, "color": "#1a7f37", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1a7f37", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 1}
+            ).addTo(map_87e2aac6a4f46045f091181ea4186c9c);
+        
+    
+        var popup_ae9bbbe1e80d165c69f45baed54a637a = L.popup({
+  "maxWidth": 370,
+});
+
+        
+            
+                var html_74b7d84dc5f89dcf29f317d02b1eab7d = $(`<div id="html_74b7d84dc5f89dcf29f317d02b1eab7d" style="width: 100.0%; height: 100.0%;">         <div style="font-family:system-ui;width:330px">           <h4 style="margin:0 0 6px">Elephant_Hill_BC_CA</h4>           <table style="font-size:12px;border-collapse:collapse">             <tr><td style="color:#666">Category</td><td><b>Reforestation</b></td></tr>             <tr><td style="color:#666">Metric</td><td><b>NDVI</b></td></tr>             <tr><td style="color:#666">Baseline</td><td>2020-09-29 &middot; S2B_10UFB_20200929_1_L2A</td></tr>             <tr><td style="color:#666">Current</td><td>2025-09-03 &middot; S2B_10UFB_20250903_0_L2A</td></tr>             <tr><td style="color:#666">Month gap</td><td>0</td></tr>             <tr><td style="color:#666">Cloud %</td><td>0.000 / 0.000</td></tr>             <tr><td style="color:#666">Core</td><td>0.452 &rarr; 0.513</td></tr>             <tr><td style="color:#666">Control</td><td>0.477 &rarr; 0.490</td></tr>             <tr><td style="color:#666">Core delta</td><td>+0.061</td></tr>             <tr><td style="color:#666">Ctrl delta</td><td>+0.013</td></tr>             <tr><td style="color:#666">Net BACI</td><td><b>+0.048</b></td></tr>             <tr><td style="color:#666">Verdict</td><td><b>ISOLATED_IMPACT</b></td></tr>           </table>         </div></div>`)[0];
+                popup_ae9bbbe1e80d165c69f45baed54a637a.setContent(html_74b7d84dc5f89dcf29f317d02b1eab7d);
+            
+        
+
+        circle_marker_71732ed41a507b7ae3844139b14bf1e1.bindPopup(popup_ae9bbbe1e80d165c69f45baed54a637a)
+        ;
+
+        
+    
+    
+            circle_marker_71732ed41a507b7ae3844139b14bf1e1.bindTooltip(
+                `<div>
+                     Elephant_Hill_BC_CA
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_89a3b88544522daa4715f7cade132eca = L.circleMarker(
+                [38.665, 102.985],
+                {"bubblingMouseEvents": true, "color": "#cf222e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cf222e", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 1}
+            ).addTo(map_87e2aac6a4f46045f091181ea4186c9c);
+        
+    
+        var popup_a6a141f4bd410343f26ca8b75118d72d = L.popup({
+  "maxWidth": 370,
+});
+
+        
+            
+                var html_85a6ed2c4632e13b02dbf266c99b30dc = $(`<div id="html_85a6ed2c4632e13b02dbf266c99b30dc" style="width: 100.0%; height: 100.0%;">         <div style="font-family:system-ui;width:330px">           <h4 style="margin:0 0 6px">Minqin_Gansu_CN</h4>           <table style="font-size:12px;border-collapse:collapse">             <tr><td style="color:#666">Category</td><td><b>Reforestation</b></td></tr>             <tr><td style="color:#666">Metric</td><td><b>NDVI</b></td></tr>             <tr><td style="color:#666">Baseline</td><td>2019-08-01 &middot; S2A_48SUH_20190801_1_L2A</td></tr>             <tr><td style="color:#666">Current</td><td>2025-08-31 &middot; S2A_48SUH_20250831_1_L2A</td></tr>             <tr><td style="color:#666">Month gap</td><td>0</td></tr>             <tr><td style="color:#666">Cloud %</td><td>0.000 / 0.000</td></tr>             <tr><td style="color:#666">Core</td><td>0.312 &rarr; 0.231</td></tr>             <tr><td style="color:#666">Control</td><td>0.312 &rarr; 0.302</td></tr>             <tr><td style="color:#666">Core delta</td><td>-0.081</td></tr>             <tr><td style="color:#666">Ctrl delta</td><td>-0.010</td></tr>             <tr><td style="color:#666">Net BACI</td><td><b>-0.071</b></td></tr>             <tr><td style="color:#666">Verdict</td><td><b>LOCAL_DEGRADATION</b></td></tr>           </table>         </div></div>`)[0];
+                popup_a6a141f4bd410343f26ca8b75118d72d.setContent(html_85a6ed2c4632e13b02dbf266c99b30dc);
+            
+        
+
+        circle_marker_89a3b88544522daa4715f7cade132eca.bindPopup(popup_a6a141f4bd410343f26ca8b75118d72d)
+        ;
+
+        
+    
+    
+            circle_marker_89a3b88544522daa4715f7cade132eca.bindTooltip(
+                `<div>
+                     Minqin_Gansu_CN
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1404032d44046cec592d423ca54ed591 = L.circleMarker(
+                [-0.925, 36.605],
+                {"bubblingMouseEvents": true, "color": "#1a7f37", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1a7f37", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 1}
+            ).addTo(map_87e2aac6a4f46045f091181ea4186c9c);
+        
+    
+        var popup_e53d285532a175584791d8e43e243774 = L.popup({
+  "maxWidth": 370,
+});
+
+        
+            
+                var html_90ef6def950a424864ecaba1ea16f07c = $(`<div id="html_90ef6def950a424864ecaba1ea16f07c" style="width: 100.0%; height: 100.0%;">         <div style="font-family:system-ui;width:330px">           <h4 style="margin:0 0 6px">Kijabe_Forest_KE</h4>           <table style="font-size:12px;border-collapse:collapse">             <tr><td style="color:#666">Category</td><td><b>Reforestation</b></td></tr>             <tr><td style="color:#666">Metric</td><td><b>NDVI</b></td></tr>             <tr><td style="color:#666">Baseline</td><td>2019-03-10 &middot; S2A_36MZE_20190310_0_L2A</td></tr>             <tr><td style="color:#666">Current</td><td>2025-03-03 &middot; S2B_37MBU_20250303_0_L2A</td></tr>             <tr><td style="color:#666">Month gap</td><td>0</td></tr>             <tr><td style="color:#666">Cloud %</td><td>0.000 / 0.030</td></tr>             <tr><td style="color:#666">Core</td><td>0.685 &rarr; 0.823</td></tr>             <tr><td style="color:#666">Control</td><td>0.733 &rarr; 0.742</td></tr>             <tr><td style="color:#666">Core delta</td><td>+0.139</td></tr>             <tr><td style="color:#666">Ctrl delta</td><td>+0.009</td></tr>             <tr><td style="color:#666">Net BACI</td><td><b>+0.130</b></td></tr>             <tr><td style="color:#666">Verdict</td><td><b>ISOLATED_IMPACT</b></td></tr>           </table>         </div></div>`)[0];
+                popup_e53d285532a175584791d8e43e243774.setContent(html_90ef6def950a424864ecaba1ea16f07c);
+            
+        
+
+        circle_marker_1404032d44046cec592d423ca54ed591.bindPopup(popup_e53d285532a175584791d8e43e243774)
+        ;
+
+        
+    
+    
+            circle_marker_1404032d44046cec592d423ca54ed591.bindTooltip(
+                `<div>
+                     Kijabe_Forest_KE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4c5bea8b808e16ba582c10ebf466b479 = L.circleMarker(
+                [-1.145, 35.745],
+                {"bubblingMouseEvents": true, "color": "#1a7f37", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1a7f37", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 1}
+            ).addTo(map_87e2aac6a4f46045f091181ea4186c9c);
+        
+    
+        var popup_42285138c37338458b7bad0b77dbc232 = L.popup({
+  "maxWidth": 370,
+});
+
+        
+            
+                var html_bb6ec7c64f293fd708373338ad0811c3 = $(`<div id="html_bb6ec7c64f293fd708373338ad0811c3" style="width: 100.0%; height: 100.0%;">         <div style="font-family:system-ui;width:330px">           <h4 style="margin:0 0 6px">Narok_Wells_Cluster_KE</h4>           <table style="font-size:12px;border-collapse:collapse">             <tr><td style="color:#666">Category</td><td><b>Water & Irrigation</b></td></tr>             <tr><td style="color:#666">Metric</td><td><b>NDWI</b></td></tr>             <tr><td style="color:#666">Baseline</td><td>2019-08-05 &middot; S2B_36MZD_20190805_1_L2A</td></tr>             <tr><td style="color:#666">Current</td><td>2026-08-13 &middot; S2C_36MZD_20260813_0_L2A</td></tr>             <tr><td style="color:#666">Month gap</td><td>0</td></tr>             <tr><td style="color:#666">Cloud %</td><td>0.000 / 0.000</td></tr>             <tr><td style="color:#666">Core</td><td>-0.514 &rarr; -0.432</td></tr>             <tr><td style="color:#666">Control</td><td>-0.446 &rarr; -0.414</td></tr>             <tr><td style="color:#666">Core delta</td><td>+0.082</td></tr>             <tr><td style="color:#666">Ctrl delta</td><td>+0.032</td></tr>             <tr><td style="color:#666">Net BACI</td><td><b>+0.050</b></td></tr>             <tr><td style="color:#666">Verdict</td><td><b>ISOLATED_IMPACT</b></td></tr>           </table>         </div></div>`)[0];
+                popup_42285138c37338458b7bad0b77dbc232.setContent(html_bb6ec7c64f293fd708373338ad0811c3);
+            
+        
+
+        circle_marker_4c5bea8b808e16ba582c10ebf466b479.bindPopup(popup_42285138c37338458b7bad0b77dbc232)
+        ;
+
+        
+    
+    
+            circle_marker_4c5bea8b808e16ba582c10ebf466b479.bindTooltip(
+                `<div>
+                     Narok_Wells_Cluster_KE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e7746992b38744396a5a36769317a2b4 = L.circleMarker(
+                [0.445, 31.985],
+                {"bubblingMouseEvents": true, "color": "#6e7781", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6e7781", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 1}
+            ).addTo(map_87e2aac6a4f46045f091181ea4186c9c);
+        
+    
+        var popup_b6654c95d633830f832c91c9941ac395 = L.popup({
+  "maxWidth": 370,
+});
+
+        
+            
+                var html_f3696b33becab8933760f4060bb0e343 = $(`<div id="html_f3696b33becab8933760f4060bb0e343" style="width: 100.0%; height: 100.0%;">         <div style="font-family:system-ui;width:330px">           <h4 style="margin:0 0 6px">Mityana_Wells_Cluster_UG</h4>           <table style="font-size:12px;border-collapse:collapse">             <tr><td style="color:#666">Category</td><td><b>Water & Irrigation</b></td></tr>             <tr><td style="color:#666">Metric</td><td><b>NDWI</b></td></tr>             <tr><td style="color:#666">Baseline</td><td>2020-01-15 &middot; S2B_36NUF_20200115_0_L2A</td></tr>             <tr><td style="color:#666">Current</td><td>2025-01-08 &middot; S2B_36NUF_20250108_0_L2A</td></tr>             <tr><td style="color:#666">Month gap</td><td>0</td></tr>             <tr><td style="color:#666">Cloud %</td><td>0.110 / 0.700</td></tr>             <tr><td style="color:#666">Core</td><td>-0.640 &rarr; -0.661</td></tr>             <tr><td style="color:#666">Control</td><td>-0.642 &rarr; -0.664</td></tr>             <tr><td style="color:#666">Core delta</td><td>-0.021</td></tr>             <tr><td style="color:#666">Ctrl delta</td><td>-0.022</td></tr>             <tr><td style="color:#666">Net BACI</td><td><b>+0.001</b></td></tr>             <tr><td style="color:#666">Verdict</td><td><b>MARGINAL_OR_NOISE</b></td></tr>           </table>         </div></div>`)[0];
+                popup_b6654c95d633830f832c91c9941ac395.setContent(html_f3696b33becab8933760f4060bb0e343);
+            
+        
+
+        circle_marker_e7746992b38744396a5a36769317a2b4.bindPopup(popup_b6654c95d633830f832c91c9941ac395)
+        ;
+
+        
+    
+    
+            circle_marker_e7746992b38744396a5a36769317a2b4.bindTooltip(
+                `<div>
+                     Mityana_Wells_Cluster_UG
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8d7b2ab87aae03b4e03aeafca9d7d252 = L.circleMarker(
+                [-17.655, 27.385],
+                {"bubblingMouseEvents": true, "color": "#0969da", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0969da", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 1}
+            ).addTo(map_87e2aac6a4f46045f091181ea4186c9c);
+        
+    
+        var popup_0530e192ce79e0877d33fe8cfc98f722 = L.popup({
+  "maxWidth": 370,
+});
+
+        
+            
+                var html_5b45b617b336717d3475359d995ed64c = $(`<div id="html_5b45b617b336717d3475359d995ed64c" style="width: 100.0%; height: 100.0%;">         <div style="font-family:system-ui;width:330px">           <h4 style="margin:0 0 6px">Binga_Water_Project_ZW</h4>           <table style="font-size:12px;border-collapse:collapse">             <tr><td style="color:#666">Category</td><td><b>Water & Irrigation</b></td></tr>             <tr><td style="color:#666">Metric</td><td><b>NDWI</b></td></tr>             <tr><td style="color:#666">Baseline</td><td>2020-07-06 &middot; S2B_35KNA_20200706_1_L2A</td></tr>             <tr><td style="color:#666">Current</td><td>2026-07-22 &middot; S2A_35KNA_20260722_1_L2A</td></tr>             <tr><td style="color:#666">Month gap</td><td>0</td></tr>             <tr><td style="color:#666">Cloud %</td><td>0.000 / 0.000</td></tr>             <tr><td style="color:#666">Core</td><td>-0.519 &rarr; -0.387</td></tr>             <tr><td style="color:#666">Control</td><td>-0.517 &rarr; -0.405</td></tr>             <tr><td style="color:#666">Core delta</td><td>+0.132</td></tr>             <tr><td style="color:#666">Ctrl delta</td><td>+0.112</td></tr>             <tr><td style="color:#666">Net BACI</td><td><b>+0.020</b></td></tr>             <tr><td style="color:#666">Verdict</td><td><b>REGIONAL_CLIMATE_SHIFT</b></td></tr>           </table>         </div></div>`)[0];
+                popup_0530e192ce79e0877d33fe8cfc98f722.setContent(html_5b45b617b336717d3475359d995ed64c);
+            
+        
+
+        circle_marker_8d7b2ab87aae03b4e03aeafca9d7d252.bindPopup(popup_0530e192ce79e0877d33fe8cfc98f722)
+        ;
+
+        
+    
+    
+            circle_marker_8d7b2ab87aae03b4e03aeafca9d7d252.bindTooltip(
+                `<div>
+                     Binga_Water_Project_ZW
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8074ef5e1e4e3f1ff106e6c31e1f04b2 = L.circleMarker(
+                [-16.055, 28.865],
+                {"bubblingMouseEvents": true, "color": "#1a7f37", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1a7f37", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 1}
+            ).addTo(map_87e2aac6a4f46045f091181ea4186c9c);
+        
+    
+        var popup_99cab862dbfd1982f2a9476ef8653f86 = L.popup({
+  "maxWidth": 370,
+});
+
+        
+            
+                var html_1cd17ba4c2445e78e29cd2eee344e162 = $(`<div id="html_1cd17ba4c2445e78e29cd2eee344e162" style="width: 100.0%; height: 100.0%;">         <div style="font-family:system-ui;width:330px">           <h4 style="margin:0 0 6px">Chirundu_Bridge_And_Village_ZW</h4>           <table style="font-size:12px;border-collapse:collapse">             <tr><td style="color:#666">Category</td><td><b>Infrastructure</b></td></tr>             <tr><td style="color:#666">Metric</td><td><b>NDBI</b></td></tr>             <tr><td style="color:#666">Baseline</td><td>2020-06-28 &middot; S2A_35LPC_20200628_1_L2A</td></tr>             <tr><td style="color:#666">Current</td><td>2026-06-29 &middot; S2A_35LPC_20260629_0_L2A</td></tr>             <tr><td style="color:#666">Month gap</td><td>0</td></tr>             <tr><td style="color:#666">Cloud %</td><td>0.000 / 0.000</td></tr>             <tr><td style="color:#666">Core</td><td>0.135 &rarr; 0.177</td></tr>             <tr><td style="color:#666">Control</td><td>0.111 &rarr; 0.107</td></tr>             <tr><td style="color:#666">Core delta</td><td>+0.042</td></tr>             <tr><td style="color:#666">Ctrl delta</td><td>-0.004</td></tr>             <tr><td style="color:#666">Net BACI</td><td><b>+0.046</b></td></tr>             <tr><td style="color:#666">Verdict</td><td><b>ISOLATED_IMPACT</b></td></tr>           </table>         </div></div>`)[0];
+                popup_99cab862dbfd1982f2a9476ef8653f86.setContent(html_1cd17ba4c2445e78e29cd2eee344e162);
+            
+        
+
+        circle_marker_8074ef5e1e4e3f1ff106e6c31e1f04b2.bindPopup(popup_99cab862dbfd1982f2a9476ef8653f86)
+        ;
+
+        
+    
+    
+            circle_marker_8074ef5e1e4e3f1ff106e6c31e1f04b2.bindTooltip(
+                `<div>
+                     Chirundu_Bridge_And_Village_ZW
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_27820362c97d19f18620c909134a36d2 = L.circleMarker(
+                [6.815, -1.465],
+                {"bubblingMouseEvents": true, "color": "#6e7781", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6e7781", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 1}
+            ).addTo(map_87e2aac6a4f46045f091181ea4186c9c);
+        
+    
+        var popup_dd078bf6c9db8a242193467496612c3f = L.popup({
+  "maxWidth": 370,
+});
+
+        
+            
+                var html_f9c2f218617e5f2df9493b91ea2120bb = $(`<div id="html_f9c2f218617e5f2df9493b91ea2120bb" style="width: 100.0%; height: 100.0%;">         <div style="font-family:system-ui;width:330px">           <h4 style="margin:0 0 6px">Ashanti_Cocoa_Village_Zone_GH</h4>           <table style="font-size:12px;border-collapse:collapse">             <tr><td style="color:#666">Category</td><td><b>Infrastructure</b></td></tr>             <tr><td style="color:#666">Metric</td><td><b>NDBI</b></td></tr>             <tr><td style="color:#666">Baseline</td><td>2020-01-27 &middot; S2B_30NXN_20200127_1_L2A</td></tr>             <tr><td style="color:#666">Current</td><td>2025-01-05 &middot; S2A_30NXN_20250105_0_L2A</td></tr>             <tr><td style="color:#666">Month gap</td><td>0</td></tr>             <tr><td style="color:#666">Cloud %</td><td>0.000 / 0.000</td></tr>             <tr><td style="color:#666">Core</td><td>-0.070 &rarr; -0.082</td></tr>             <tr><td style="color:#666">Control</td><td>-0.042 &rarr; -0.047</td></tr>             <tr><td style="color:#666">Core delta</td><td>-0.012</td></tr>             <tr><td style="color:#666">Ctrl delta</td><td>-0.006</td></tr>             <tr><td style="color:#666">Net BACI</td><td><b>-0.006</b></td></tr>             <tr><td style="color:#666">Verdict</td><td><b>MARGINAL_OR_NOISE</b></td></tr>           </table>         </div></div>`)[0];
+                popup_dd078bf6c9db8a242193467496612c3f.setContent(html_f9c2f218617e5f2df9493b91ea2120bb);
+            
+        
+
+        circle_marker_27820362c97d19f18620c909134a36d2.bindPopup(popup_dd078bf6c9db8a242193467496612c3f)
+        ;
+
+        
+    
+    
+            circle_marker_27820362c97d19f18620c909134a36d2.bindTooltip(
+                `<div>
+                     Ashanti_Cocoa_Village_Zone_GH
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var layer_control_c6f4a22e9ef2694c8f74e972bb809f40_layers = {
+                base_layers : {
+                    "Esri World Imagery" : tile_layer_7fe142b1ecef3a4bc851c08776e1e44a,
+                },
+                overlays :  {
+                },
+            };
+            let layer_control_c6f4a22e9ef2694c8f74e972bb809f40 = L.control.layers(
+                layer_control_c6f4a22e9ef2694c8f74e972bb809f40_layers.base_layers,
+                layer_control_c6f4a22e9ef2694c8f74e972bb809f40_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_87e2aac6a4f46045f091181ea4186c9c);
+
+        
+</script>
+</html>

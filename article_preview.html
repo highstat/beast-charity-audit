@@ -1,0 +1,413 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Auditing the MrBeast Charity Machine</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown-light.min.css">
+<style>
+  body { box-sizing: border-box; max-width: 860px; margin: 0 auto; padding: 40px 25px; }
+  .markdown-body img { max-height: 440px; width: auto; max-width: 100%; border: 1px solid #e5e7eb; border-radius: 8px; }
+  .slider-box { border: 1px solid #d0d7de; border-radius: 10px; padding: 14px 18px; margin: 20px 0; background: #f8fafc; text-align: center; }
+  .slider-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .slide-title { font-weight: 600; font-size: 15px; color: #1f2937; }
+  .nav-btn { background: #ffffff; border: 1px solid #d0d7de; border-radius: 6px; padding: 6px 14px; font-size: 14px; font-weight: 600; cursor: pointer; color: #111827; transition: background 0.15s; }
+  .nav-btn:hover { background: #f3f4f6; }
+  .slide-frame { display: flex; justify-content: center; align-items: center; min-height: 400px; }
+  .slide-frame img { max-height: 380px; width: auto; max-width: 100%; border-radius: 6px; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  .slide-dots { margin-top: 10px; display: flex; justify-content: center; gap: 7px; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; background: #cbd5e1; cursor: pointer; display: inline-block; }
+  .dot.active { background: #2563eb; transform: scale(1.2); }
+</style>
+</head><body class="markdown-body"><h1>Auditing the MrBeast Charity Machine: $100M Partner Reserves, Seven-Figure Executive Pay, and What Satellites Actually See</h1>
+<p>MrBeast's viral fundraisers (#TeamTrees, #TeamSeas, #TeamWater) and Beast Philanthropy videos have raised over $95 million from grassroots donors on a simple promise: one dollar equals one tree in the ground or one pound of trash out of the ocean. Wait long enough after the cameras leave, though, and the public record tells a much messier story:</p>
+<ul>
+<li><strong>Grassroots dollars feed $100M corporate cushions:</strong> While Beast Philanthropy itself is a $9.5M operation (filing as <em>Mrcharity Inc</em>), the mega-campaigns route money to giant legacy nonprofits. IRS Form 990 filings show #TeamTrees partner Arbor Day Foundation sitting on <strong>$100.9 million in net assets</strong> while paying <strong>$3.36 million a year</strong> in executive compensation. #TeamSeas partner Ocean Conservancy holds <strong>$81.0 million in reserves</strong> and pays executives <strong>$2.4M to $3.6M annually</strong>.</li>
+<li><strong>Planting is filmed; survival is not:</strong> At the North Carolina state park filmed for the flagship #TeamTrees launch video, on-the-ground counts found only <strong>118 of 2,000 trees (6%) alive</strong>, compared to Arbor Day's 97% survival pitch. In China's Minqin desert margin, satellite imagery recorded a <strong>7.1-point drop in greenery</strong> since planting began.</li>
+<li><strong>Five sponsors claiming the same green forest:</strong> Even where satellite imagery confirms strong tree growth, like Kijabe Forest in Kenya (+13.0 points), charities refuse to publish GPS polygon maps (shapefiles) of their plots. As a result, at least <strong>five separate global funders</strong> (#TeamTrees, Ecosia, One Tree Planted, Mastercard's Priceless Planet, and UNDP) can point donors to the exact same greening hillside as proof of their own campaign.</li>
+</ul>
+<h2>Why these projects</h2>
+<p>Beast Philanthropy's videos are built around before-and-after claims. Several of those claims have been disputed.</p>
+<p>The #TeamTrees campaign raised more than $20 million and promised 20 million trees by the end of 2020. The launch video was filmed at a North Carolina park. Reported ground checks at that park found 118 of 2,000 planted trees alive, about 6%. The Arbor Day Foundation, which handled the planting, had projected 97% survival. A check at one park covers one planting round. The gap is still large. A video count records trees put in the ground. Survival is a separate number.</p>
+<p>The #TeamWater campaign raised about $40 million and built 100 wells in Africa. Residents, local reporters, and online critics questioned whether every well still worked and who would pay for repairs. Public calls for an independent audit followed. The campaign's public material does not include a well-by-well maintenance record. A construction video shows a well being installed. It does not show the repair schedule for the next five years.</p>
+<p>Former employees told Business Insider and Time that Feastables product placement was worked into aid-drop shoots. That is a business decision inside a charity video, and it is the kind of detail that makes a donation video look like an ad. Gizmodo criticized #TeamSeas as greenwashing, arguing that a cleanup campaign can draw attention away from the production of plastic. The cleanups took place. The criticism targets the campaign's framing and its silence on plastic production.</p>
+<h2>What the money shows</h2>
+<p>ProPublica's Nonprofit Explorer extracts numbers from IRS Form 990 filings. The table includes the four most recent extracted years for each organization, using legal filer names where they differ from public brands.</p>
+<table>
+<thead>
+<tr>
+<th>Organization</th>
+<th>EIN</th>
+<th style="text-align: right;">Fiscal year</th>
+<th style="text-align: right;">Revenue</th>
+<th style="text-align: right;">Expenses</th>
+<th style="text-align: right;">Reported executive pay</th>
+<th style="text-align: right;">Net assets at year end</th>
+<th style="text-align: right;">Expenses as share of revenue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Beast Philanthropy</td>
+<td>85-2067214</td>
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">$9,513,450</td>
+<td style="text-align: right;">$8,638,123</td>
+<td style="text-align: right;">$96,951</td>
+<td style="text-align: right;">$2,480,643</td>
+<td style="text-align: right;">90.8%</td>
+</tr>
+<tr>
+<td>Beast Philanthropy</td>
+<td>85-2067214</td>
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">$10,155,691</td>
+<td style="text-align: right;">$8,968,669</td>
+<td style="text-align: right;">$94,716</td>
+<td style="text-align: right;">$1,605,316</td>
+<td style="text-align: right;">88.3%</td>
+</tr>
+<tr>
+<td>Beast Philanthropy</td>
+<td>85-2067214</td>
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">$2,810,521</td>
+<td style="text-align: right;">$2,566,279</td>
+<td style="text-align: right;">$84,240</td>
+<td style="text-align: right;">$418,294</td>
+<td style="text-align: right;">91.3%</td>
+</tr>
+<tr>
+<td>Beast Philanthropy</td>
+<td>85-2067214</td>
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">$469,150</td>
+<td style="text-align: right;">$242,437</td>
+<td style="text-align: right;">$0</td>
+<td style="text-align: right;">$226,713</td>
+<td style="text-align: right;">51.7%</td>
+</tr>
+<tr>
+<td>National Arbor Day Foundation</td>
+<td>23-7169265</td>
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">$99,061,954</td>
+<td style="text-align: right;">$91,666,382</td>
+<td style="text-align: right;">$3,356,377</td>
+<td style="text-align: right;">$100,896,370</td>
+<td style="text-align: right;">92.5%</td>
+</tr>
+<tr>
+<td>National Arbor Day Foundation</td>
+<td>23-7169265</td>
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">$97,035,028</td>
+<td style="text-align: right;">$85,958,857</td>
+<td style="text-align: right;">$3,118,003</td>
+<td style="text-align: right;">$92,602,143</td>
+<td style="text-align: right;">88.6%</td>
+</tr>
+<tr>
+<td>National Arbor Day Foundation</td>
+<td>23-7169265</td>
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">$94,760,158</td>
+<td style="text-align: right;">$78,863,450</td>
+<td style="text-align: right;">$2,593,198</td>
+<td style="text-align: right;">$81,041,620</td>
+<td style="text-align: right;">83.2%</td>
+</tr>
+<tr>
+<td>National Arbor Day Foundation</td>
+<td>23-7169265</td>
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">$89,090,344</td>
+<td style="text-align: right;">$75,187,856</td>
+<td style="text-align: right;">$1,984,804</td>
+<td style="text-align: right;">$66,784,404</td>
+<td style="text-align: right;">84.4%</td>
+</tr>
+<tr>
+<td>Ocean Conservancy</td>
+<td>23-7245152</td>
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">$48,602,165</td>
+<td style="text-align: right;">$51,861,192</td>
+<td style="text-align: right;">$2,418,987</td>
+<td style="text-align: right;">$80,970,831</td>
+<td style="text-align: right;">106.7%</td>
+</tr>
+<tr>
+<td>Ocean Conservancy</td>
+<td>23-7245152</td>
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">$49,652,396</td>
+<td style="text-align: right;">$40,853,139</td>
+<td style="text-align: right;">$3,655,926</td>
+<td style="text-align: right;">$80,749,273</td>
+<td style="text-align: right;">82.3%</td>
+</tr>
+<tr>
+<td>Ocean Conservancy</td>
+<td>23-7245152</td>
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">$55,287,830</td>
+<td style="text-align: right;">$31,550,814</td>
+<td style="text-align: right;">$3,017,167</td>
+<td style="text-align: right;">$79,769,037</td>
+<td style="text-align: right;">57.1%</td>
+</tr>
+<tr>
+<td>Ocean Conservancy</td>
+<td>23-7245152</td>
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">$33,767,304</td>
+<td style="text-align: right;">$32,093,986</td>
+<td style="text-align: right;">$2,629,498</td>
+<td style="text-align: right;">$48,969,047</td>
+<td style="text-align: right;">95.0%</td>
+</tr>
+<tr>
+<td>The Ocean Cleanup (US)</td>
+<td>81-5132355</td>
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">$19,747,898</td>
+<td style="text-align: right;">$30,619,405</td>
+<td style="text-align: right;">$0</td>
+<td style="text-align: right;">$8,801,905</td>
+<td style="text-align: right;">155.1%</td>
+</tr>
+<tr>
+<td>The Ocean Cleanup (US)</td>
+<td>81-5132355</td>
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">$36,740,334</td>
+<td style="text-align: right;">$23,744,670</td>
+<td style="text-align: right;">$0</td>
+<td style="text-align: right;">$19,673,412</td>
+<td style="text-align: right;">64.6%</td>
+</tr>
+<tr>
+<td>The Ocean Cleanup (US)</td>
+<td>81-5132355</td>
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">$8,535,781</td>
+<td style="text-align: right;">$7,896,828</td>
+<td style="text-align: right;">$0</td>
+<td style="text-align: right;">$8,106,113</td>
+<td style="text-align: right;">92.5%</td>
+</tr>
+<tr>
+<td>The Ocean Cleanup (US)</td>
+<td>81-5132355</td>
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">$4,270,344</td>
+<td style="text-align: right;">$85,306</td>
+<td style="text-align: right;">$0</td>
+<td style="text-align: right;">$7,467,160</td>
+<td style="text-align: right;">2.0%</td>
+</tr>
+</tbody>
+</table>
+<p>The reported executive pay field covers current officers, directors, trustees, and key employees. It is not total payroll.</p>
+<p>Beast Philanthropy files under the legal name Mrcharity Inc, EIN 85-2067214. In fiscal 2023 the organization reported $9.51 million in revenue, $8.64 million in expenses, and $2.48 million in net assets. Reported executive pay was $96,951, about 1.1% of expenses. Revenue fell from $10.16 million in fiscal 2022 to $9.51 million in fiscal 2023. Net assets rose by about $875,000 over the same period. ProPublica lists a fiscal 2024 filing but has not extracted its financial data, so the table stops at 2023.</p>
+<p>The National Arbor Day Foundation reported $99.06 million in revenue and $91.67 million in expenses in fiscal 2024. It ended the year with $100.9 million in net assets, about 1.1 years of expenses. Reported executive pay was $3.36 million, about 3.7% of expenses. Arbor Day is the planting partner behind #TeamTrees, so its reserves and pay are part of the same campaign picture.</p>
+<p>Ocean Conservancy reported $48.60 million in revenue and $51.86 million in expenses, so it spent more than it took in. It ended the year with $81.0 million in net assets, about 1.6 years of expenses. Reported executive pay was $2.42 million that year, $3.66 million in fiscal 2022, and $3.02 million in fiscal 2021. Ocean Conservancy is a partner in #TeamSeas.</p>
+<p>The Ocean Cleanup (US) is the US affiliate, American Friends Of The Ocean Cleanup Foundation. It reported $19.75 million in revenue and $30.62 million in expenses in fiscal 2023, with $8.8 million in net assets and no reported executive pay in this field. The Dutch foundation that runs the cleanup operations is a separate legal entity and is not covered by this Form 990.</p>
+<p>Viewers often treat MrBeast's charity drives as a single operation, but the money flows into organizations of very different scales. Beast Philanthropy itself is a $9.5 million charity that pays under $97,000 in executive compensation. By contrast, viral fundraisers like #TeamTrees and #TeamSeas routed donations directly to giant partner nonprofits like the Arbor Day Foundation ($99.1 million in annual revenue) and Ocean Conservancy ($48.6 million). Those partners sit on $81 million to $101 million in net reserves and pay $2.4 million to $3.6 million a year to their executives and key officers. Holding a year of reserves and paying seven-figure executive salaries is legal and does not constitute fraud under IRS rules, but it means grassroots $1 donations are flowing into massive institutions with large overhead and huge cash cushions.</p>
+<h2>What the satellites show</h2>
+<p>Each site analysis uses a 3 km by 3 km window centered on the coordinates. An 800 m by 800 m box marks the approximate project area, compared against a surrounding control ring from 1.2 km to 3 km. A 200 m guard band separates the two so project edges do not bleed into the control zone. Sentinel-2 imagery evaluates the same spectral index on matching dates across both zones. The net local difference subtracts the ring change from the box change, using a 2.5-point shift as the threshold for a meaningful signal.</p>
+<p>The three indices measure different things:</p>
+<table>
+<thead>
+<tr>
+<th>Index</th>
+<th>Plain meaning</th>
+<th>Higher value means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NDVI</td>
+<td>Green leaves and vegetation cover</td>
+<td>More greenery</td>
+</tr>
+<tr>
+<td>NDWI</td>
+<td>Surface water and wet soil</td>
+<td>Wetter ground</td>
+</tr>
+<tr>
+<td>NDBI</td>
+<td>Built-up and bare ground</td>
+<td>More buildings or cleared land</td>
+</tr>
+</tbody>
+</table>
+<p>Raw index values run from -1 to +1. Multiplying index changes by 100 converts them into points: a change of +0.05 appears as +5.0 points.</p>
+
+<div class="slider-box">
+  <div class="slider-header">
+    <button class="nav-btn" onclick="moveSlide(-1)">&#9664; Prev</button>
+    <span id="slide-title" class="slide-title"></span>
+    <button class="nav-btn" onclick="moveSlide(1)">Next &#9654;</button>
+  </div>
+  <div class="slide-frame">
+    <a id="slide-link" href="#" target="_blank">
+      <img id="slide-img" src="" alt="Satellite comparison card">
+    </a>
+  </div>
+  <div id="slide-dots" class="slide-dots"></div>
+</div>
+<script>
+  const slides = ["visuals/01_Tyndall_AFB_FL_US.png", "visuals/02_Elephant_Hill_BC_CA.png", "visuals/03_Minqin_Gansu_CN.png", "visuals/04_Kijabe_Forest_KE.png", "visuals/05_Narok_Wells_Cluster_KE.png", "visuals/06_Mityana_Wells_Cluster_UG.png", "visuals/07_Binga_Water_Project_ZW.png", "visuals/08_Chirundu_Bridge_And_Village_ZW.png", "visuals/09_Ashanti_Cocoa_Village_Zone_GH.png"];
+  const titles = ["Tyndall AFB FL US", "Elephant Hill BC CA", "Minqin Gansu CN", "Kijabe Forest KE", "Narok Wells Cluster KE", "Mityana Wells Cluster UG", "Binga Water Project ZW", "Chirundu Bridge And Village ZW", "Ashanti Cocoa Village Zone GH"];
+  let cur = 0;
+  function renderSlide() {
+    document.getElementById("slide-img").src = slides[cur];
+    document.getElementById("slide-link").href = slides[cur];
+    document.getElementById("slide-title").textContent = (cur + 1) + " / " + slides.length + " — " + titles[cur];
+    const dots = document.getElementById("slide-dots");
+    dots.innerHTML = slides.map((_, i) => `<span class="dot ${i===cur ? "active" : ""}" onclick="cur=${i};renderSlide()"></span>`).join("");
+  }
+  function moveSlide(step) {
+    cur = (cur + step + slides.length) % slides.length;
+    renderSlide();
+  }
+  document.addEventListener("keydown", e => {
+    if (e.key === "ArrowLeft") moveSlide(-1);
+    if (e.key === "ArrowRight") moveSlide(1);
+  });
+  renderSlide();
+</script>
+<p align="center"><a href="beast_audit_dashboard.png"><img src="beast_audit_dashboard.png" width="720" alt="Dashboard of financial and satellite results"></a></p>
+
+<table>
+<thead>
+<tr>
+<th>Site</th>
+<th>Dates</th>
+<th style="text-align: right;">Inside change</th>
+<th style="text-align: right;">Ring change</th>
+<th style="text-align: right;">Local difference</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="visuals/01_Tyndall_AFB_FL_US.png">Tyndall AFB, Florida, USA</a></td>
+<td>2019-12-31 to 2025-12-19</td>
+<td style="text-align: right;">+15.8</td>
+<td style="text-align: right;">+8.5</td>
+<td style="text-align: right;">+7.3</td>
+<td>Verified Growth</td>
+</tr>
+<tr>
+<td><a href="visuals/02_Elephant_Hill_BC_CA.png">Elephant Hill, British Columbia, Canada</a></td>
+<td>2020-09-29 to 2025-09-03</td>
+<td style="text-align: right;">+6.1</td>
+<td style="text-align: right;">+1.3</td>
+<td style="text-align: right;">+4.8</td>
+<td>Verified Growth</td>
+</tr>
+<tr>
+<td><a href="visuals/03_Minqin_Gansu_CN.png">Minqin, Gansu, China</a></td>
+<td>2019-08-01 to 2025-08-31</td>
+<td style="text-align: right;">-8.1</td>
+<td style="text-align: right;">-1.0</td>
+<td style="text-align: right;">-7.1</td>
+<td>Tree Loss</td>
+</tr>
+<tr>
+<td><a href="visuals/04_Kijabe_Forest_KE.png">Kijabe Forest, Kenya</a></td>
+<td>2019-03-10 to 2025-03-03</td>
+<td style="text-align: right;">+13.9</td>
+<td style="text-align: right;">+0.9</td>
+<td style="text-align: right;">+13.0</td>
+<td>Verified Growth</td>
+</tr>
+<tr>
+<td><a href="visuals/05_Narok_Wells_Cluster_KE.png">Narok wells, Kenya</a></td>
+<td>2019-08-05 to 2026-08-13</td>
+<td style="text-align: right;">+8.2</td>
+<td style="text-align: right;">+3.2</td>
+<td style="text-align: right;">+5.0</td>
+<td>Wetter Soil</td>
+</tr>
+<tr>
+<td><a href="visuals/06_Mityana_Wells_Cluster_UG.png">Mityana wells, Uganda</a></td>
+<td>2020-01-15 to 2025-01-08</td>
+<td style="text-align: right;">-2.1</td>
+<td style="text-align: right;">-2.2</td>
+<td style="text-align: right;">+0.1</td>
+<td>No Change</td>
+</tr>
+<tr>
+<td><a href="visuals/07_Binga_Water_Project_ZW.png">Binga water project, Zimbabwe</a></td>
+<td>2020-07-06 to 2026-07-22</td>
+<td style="text-align: right;">+13.2</td>
+<td style="text-align: right;">+11.2</td>
+<td style="text-align: right;">+2.0</td>
+<td>Weather Only</td>
+</tr>
+<tr>
+<td><a href="visuals/08_Chirundu_Bridge_And_Village_ZW.png">Chirundu bridge and village, Zimbabwe</a></td>
+<td>2020-06-28 to 2026-06-29</td>
+<td style="text-align: right;">+4.2</td>
+<td style="text-align: right;">-0.4</td>
+<td style="text-align: right;">+4.6</td>
+<td>More Built-Up</td>
+</tr>
+<tr>
+<td><a href="visuals/09_Ashanti_Cocoa_Village_Zone_GH.png">Ashanti cocoa village, Ghana</a></td>
+<td>2020-01-27 to 2025-01-05</td>
+<td style="text-align: right;">-1.2</td>
+<td style="text-align: right;">-0.6</td>
+<td style="text-align: right;">-0.6</td>
+<td>No Change</td>
+</tr>
+</tbody>
+</table>
+<p>Kijabe Forest is the clearest local gain. Greenery inside the box rose by 13.9 points while the ring rose by 0.9 points. The local difference is 13.0 points, well above the threshold. Both images are from March, which reduces seasonal bias. The result is still one pair of dates, not a five-year average.</p>
+<p>Elephant Hill also clears the threshold, with a 4.8-point local gain.</p>
+<p>Minqin moves the other way. Greenery inside the box fell by 8.1 points while the ring fell by 1.0 point. The local difference is -7.1 points, well below the threshold, and the plain label is Tree Loss. The site now sits on the desert edge west of town, among shelterbelts, fields, and bare sand. It is no longer the downtown street grid. A loss there can mean a dry year, a retired field, or cutting on the oasis margin. One scene pair cannot separate those causes. The result is a real local signal in the imagery, not proof that a project failed.</p>
+<p>Binga shows why the ring matters. Wet-soil signal inside the inland rural box rose by 13.2 points. The surrounding ring rose by 11.2 points. The local difference is +2.0 points, which stays below the 2.5-point threshold. The whole district got wetter between the two July scenes, and the target zone moved only slightly more than its neighborhood. Moving the point inland from the Lake Kariba shoreline also removed lake-edge artifacts.</p>
+<p>Narok, moved out of Narok town center into the rural agro-pastoral zone at -1.1450, 35.7450, clears the threshold. The inside change is +8.2 points and the ring change is +3.2 points, for a +5.0-point local gain. That indicates wetter soil or denser vegetation inside the rural box than in the surrounding fields, though a single August pair cannot tie that moisture directly to a borehole pump.</p>
+<p>Mityana, set in a rural farming zone outside the town core at 0.4450, 31.9850, shows no clear local change. The inside change is -2.1 points and the ring change is -2.2 points, leaving a +0.1-point local difference. Drinking-water boreholes rarely alter surface moisture across an 800 m square unless they feed open field irrigation.</p>
+<p>Chirundu, placed on fully terrestrial ground at -16.0550, 28.8650 away from the main Zambezi channel, shows a +4.2-point rise in built-up or bare-ground signal inside the core while the ring changed by -0.4 points. The +4.6-point local difference clears the threshold and is consistent with new cleared ground, roads, or roofs.</p>
+<p>Ashanti now sits in a rural cocoa village zone northeast of Kumasi, not on the city center or the stadium. The inside change is -1.2 points on NDBI and the ring change is -0.6 points. The local difference is -0.6 points, inside the noise band, so the plain label is No Change. A negative NDBI change means less bare or built-up surface, but at this size it is too small to separate from scene noise.</p>
+<p>Tyndall now sits on the interior pine tract at 30.0460, -85.4750, well inland from the old shoreline coordinate. The 800 m core is 100% land on both dates, with zero water pixels. Greenery inside the box rose by 15.8 points while the ring rose by 8.5 points. The local difference is +7.3 points, which clears the threshold and reads as Verified Growth.</p>
+<p>The change map still has red patches. Hurricane Michael hit Tyndall in October 2018. The Air Force then spent several years on salvage logging, clearing downed and damaged timber. Bare ground and stacked logs register as spectral loss. Replanted longleaf pine stays in a low grass stage for its first several years, so a young stand can look sparse from above even when it is healthy. The 2019 baseline falls after the storm and during the salvage work, so the comparison starts from an unusually bare state.</p>
+<p>The count is five sites with a verified local signal (three reforestation, one rural water, one infrastructure), one weather-only water site, two no-change sites, and one tree-loss site. The Minqin loss is a local signal on the oasis margin. It does not by itself show that a planting program failed.</p>
+<h2>The attribution problem</h2>
+<p>A satellite image can show that a hillside got greener. It cannot show which donor paid for which seedling, and several funders often support the same local partner.</p>
+<p>Kijabe Forest is the clearest example. The Kijabe Forest Trust carries out restoration there with the Kenya Forest Service. Public campaign and partner materials list at least five sources of support for work in the same forest:</p>
+<ol>
+<li>The Arbor Day Foundation, through #TeamTrees, with a 250,000-tree commitment.</li>
+<li>Ecosia, which has funded planting in Kijabe independently.</li>
+<li>One Tree Planted.</li>
+<li>The Mastercard Priceless Planet Coalition and Conservation International.</li>
+<li>UNDP, the Global Environment Facility, and Kenyan government restoration grants.</li>
+</ol>
+<p>Public materials do not include polygon-level shapefiles that assign each planted parcel to a specific grant. Without those boundaries, each sponsor can point to the same green hillside as evidence of its own campaign. The +13.0-point gain at Kijabe is visible in the imagery. Satellite imagery cannot divide the credit among the sponsors.</p>
+<p>Tyndall has a similar overlap. Its reforestation is a federal effort led by the U.S. Air Force Wildland Fire Branch, the Air Force Civil Engineer Center, the Florida Forest Service, and the National Fish and Wildlife Foundation, alongside the Arbor Day Foundation. New pine cover in a satellite image cannot be assigned to one of those partners.</p>
+<p>The overlap is normal in large restoration programs. It also limits what this audit can prove. A before-and-after image can confirm that work happened in a place, but it cannot assign a specific donation to a specific tree.</p>
+<h2>Scope and Methodology Note</h2>
+<p>This audit relies on public IRS Form 990 tax filings (via ProPublica) and Copernicus Sentinel-2 Level-2A surface reflectance imagery (10 m resolution for NDVI/NDWI, 20 m for NDBI). To prevent regional rainy seasons from faking project success, each site compares an 800 m target core against a 1.2 km to 3.0 km surrounding control ring on same-month image pairs with water and clouds masked out. Because Beast Philanthropy and its partners do not publish exact GPS shapefiles for their planting or construction boundaries, target boxes represent approximate rural project zones. Spectral indices measure macro-scale surface reflectance rather than individual saplings or underground borehole flow rates, and reported media disputes reflect third-party journalism rather than court findings.</p>
+<h2>Sources</h2>
+<ul>
+<li>ProPublica Nonprofit Explorer: <a href="https://projects.propublica.org/nonprofits/organizations/852067214">Beast Philanthropy / Mrcharity Inc</a>, <a href="https://projects.propublica.org/nonprofits/organizations/237169265">National Arbor Day Foundation</a>, <a href="https://projects.propublica.org/nonprofits/organizations/237245152">Ocean Conservancy</a>, <a href="https://projects.propublica.org/nonprofits/organizations/815132355">The Ocean Cleanup US</a>.</li>
+<li>IRS Tax Exempt Organization Search: https://apps.irs.gov/app/eos/</li>
+<li>Sentinel-2 mission overview: https://sentinel.esa.int/web/sentinel/missions/sentinel-2</li>
+<li>Element 84 Earth Search STAC API: https://earth-search.aws.element84.com/v1</li>
+<li>Team Trees: https://en.wikipedia.org/wiki/Team_Trees and https://teamtrees.org/</li>
+<li>Team Water: https://en.wikipedia.org/wiki/Team_Water and https://www.wateraid.org/global/teamwater</li>
+<li>Team Seas: https://en.wikipedia.org/wiki/Team_Seas and https://teamseas.org/</li>
+<li>Gizmodo, "MrBeast Misses the Point": https://gizmodo.com/mrbeast-misses-the-point-1848148459</li>
+<li>Kijabe Forest Trust: https://www.kijabeforest.org/</li>
+<li>Ecosia: https://www.ecosia.org/</li>
+<li>One Tree Planted: https://onetreeplanted.org/</li>
+<li>Mastercard Priceless Planet Coalition: https://www.mastercard.com/us/en/for-the-world/planet/priceless-planet.html</li>
+<li>Conservation International: https://www.conservation.org/partners/priceless-planet-coalition</li>
+<li>UNDP: https://www.undp.org/</li>
+<li>Global Environment Facility: https://www.thegef.org/</li>
+<li>Tyndall AFB forestry program: https://www.tyndall.af.mil/News/Article-Display/Article/3651168/sprucing-up-tyndalls-forests/</li>
+<li>Air University on Tyndall restoration: https://www.airuniversity.af.edu/News/Display/Article/2059018/deforestation-on-tyndall-afb-leads-to-ecosystem-restoration/</li>
+<li>Arbor Day Foundation on longleaf pine: https://www.arborday.org/perspectives/love-longleaf-pine</li>
+</ul>
+<p>Business Insider and Time reported the former-employee accounts about Feastables. The 118-of-2,000 tree check was reported from ground visits at the North Carolina launch site.</p></body></html>
